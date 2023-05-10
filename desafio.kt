@@ -1,21 +1,48 @@
 // [Template no Kotlin Playground](https://pl.kotl.in/WcteahpyN)
-
-enum class Nivel { BASICO, INTERMEDIARIO, DIFICIL }
-
-class Usuario
-
-data class ConteudoEducacional(var nome: String, val duracao: Int = 60)
-
-data class Formacao(val nome: String, var conteudos: List<ConteudoEducacional>) {
-
-    val inscritos = mutableListOf<Usuario>()
-    
-    fun matricular(usuario: Usuario) {
-        TODO("Utilize o parâmetro $usuario para simular uma matrícula (usar a lista de $inscritos).")
-    }
-}
-
 fun main() {
-    TODO("Analise as classes modeladas para este domínio de aplicação e pense em formas de evoluí-las.")
-    TODO("Simule alguns cenários de teste. Para isso, crie alguns objetos usando as classes em questão.")
+    val curso1 = ConteudoEducacional(
+        "curso 1",
+        "curso legal 1",
+        Nivel.INTERMEDIARIO,
+        8
+    )
+
+
+    val curso2 = ConteudoEducacional(
+        "curso 2",
+        "Curso rapido",
+        Nivel.BASICO,
+        4
+    )
+
+    val curso3 = ConteudoEducacional(
+        "curso 3",
+        "Curso bem dificil",
+        Nivel.DIFICIL,
+        5
+    )
+
+    val formacao = Formacao("Bootcamp", "Descrição Bootcamp Java Developer")
+    formacao.adcionarConteudo(curso1)
+    formacao.adcionarConteudo(curso2)
+    formacao.adcionarConteudo(curso3)
+
+    val devCamila = Usuario("Camila")
+    formacao.matricular(devCamila)
+    System.out.println("XP Camila:" + devCamila.calcularTotalXp())
+    devCamila.progredir()
+    devCamila.progredir()
+    println("-")
+    System.out.println("XP Camila:" + devCamila.calcularTotalXp())
+
+    println("-------")
+
+    val devDiego = Usuario("Diego")
+    formacao.matricular(devDiego)
+    System.out.println("XP Diego:" + devDiego.calcularTotalXp())
+    devDiego.progredir()
+    devDiego.progredir()
+    devDiego.progredir()
+    println("-")
+    System.out.println("XP Diego:" + devDiego.calcularTotalXp())
 }
